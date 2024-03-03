@@ -2,22 +2,19 @@
 
 function () {
 
+angular.module('LunchCheck', [])
+.controller( 'LunchCheckController' , LunchCheckController );
 
-angular.module('myModel', [])
-.controller( 'Ctrlr' , Ctrlr );
-
-
-Ctrlr.$inject['$scope'];
-function Ctrlr($scope) {
+LunchCheckController.$inject['$scope'];
+function LunchCheckController($scope) {
     $scope.items="";
     $scope.msg='';
-    $scope.c = 12
+    
 
-
-    $scope.dispMsg = function () {
+    $scope.changeMsg = function () {
 
         var count = $scope.items.split(',').length;
-        $scope.c = count;
+        
         if($scope.items == '' ) {
             $scope.msg = "Please enter data first";
         } else if(count <= 3) {
@@ -27,9 +24,11 @@ function Ctrlr($scope) {
         }
     
     };
+
+    $scope.getMsg = function () {
+        return $scope.msg;
+    }
 }
-
-
 
 }
 )();
